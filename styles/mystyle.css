@@ -97,15 +97,20 @@
 }
 .topnav{
     background: none;
+    float: left;
+    width: 100%;
 }
+
 .topnavbar .container{
+    width: 100%;
     margin-left: 107px !important;
 }
+
 .toggle-costume{
     float: left;
 }
 #navbarontop{
-    padding-left: 312px;
+    padding-left: 3px;
     padding-top: 17px;
     height: 69px;
 }
@@ -114,6 +119,7 @@
     src: url(../source/fonts/BebasNeue-Regular.otf) format("truetype");
 }
 #navbarontop > li > a {
+    
     font-family: 'BebasNeue Regular';
     font-size: 17px;
     color: #313943;
@@ -125,6 +131,7 @@
     margin-left: 34px;
     border-bottom: 2px solid rgba(0,0,0,0.0);
 }
+
 #navbarontop>li>a:hover{
     background-color: none !important;
     background: none !important;
@@ -181,6 +188,7 @@
 nav{
     display: block;
 }
+
 
 /* NavBarOn Top Media screen */
 
@@ -382,6 +390,7 @@ nav{
 	margin-right: 9px;
 }
 .navbarborder>li>a{
+
 	font-family: "OpenSans Regular";
 	font-size: 13pt;
 	color: #fff !important;
@@ -390,6 +399,7 @@ nav{
 	padding-bottom: 11px;
 	border: 1px solid #fff!important;
 }
+
 .navbarborder>li>a:hover{
 	color: #F8C72D !important;
 	background-color: #fff!important;
@@ -1106,9 +1116,193 @@ height: 30px;
           transition-duration: 0.8s;
 }
 
+.mainContent{
+    height: 100%;
+    position: relative;
+    text-align: center;
+    
+}
+.leftContent{
+    z-index: 1;
+    top: 10%;
+    margin-top: 7.5%;
+    margin-left: 1%;
+    position: fixed;
+    height: 400px;
+    width: 200px;
+    background: gray;
+    border-radius: 25px;
+}
+.middleContent{
+    left: 15%;
+    position: absolute;
+    background: white;
+    height: 85%;
+    margin-top: 7%;
+    width: 70%;
+    
+}
+.rightContent{
+    position: fixed;
+    top: 10%;
+    left: 84%;
+    margin-top: 7.5%;
+    margin-right: 1%;
+    background: gray;
+    height: 400px;
+    width: 200px;
+    border-radius: 25px;
+}
+.active{
+    float: right;
+    margin-left: 800px;
+}
+.registerFrame{
+    padding-left: 10px;
+    left: 20%;
+    position: absolute;
+    text-align: center;
+    background: white;
+    height: 85%;
+    margin-top: 2%;
+    width: 60%;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px 5px gray;
+    
+}
+.formController{
+    width: 400px;
+    margin-top: 50px;
+    
+}
+.formController > input{
+    
+    float: left;
+    background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  color: #555;
+  box-sizing: border-box;
+  font-family: 'Arvo';
+  font-size: 14px;
+  height: 30px;
+    margin: 10px;
+  padding: 10px 0px;
+  position: relative;
+  top: 50%;
+  width: 200px;
+   
+   &:focus {
+    outline: none;    
+  }
+}
+.formController input::-webkit-input-placeholder {
+  color: #AAA;
+}
 
+.formController input:focus::-webkit-input-placeholder {
+  color: dodgerblue;
+}
+.formController input:focus:: input-placeholder{
+    color: dodgerblue;
+}
 
+.formController input:focus+.underline {
+  transform: scale(1);
+}
 
+.underline{
+    float: left;
+  background-color: dodgerblue;
+  display: inline-block;
+  height: 2px;
+  left: 45px;
+    
+  margin-top: -4px;
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  width: 202px;
+    margin-left: 33%;
+}
+#nameLabel{
+    margin-right: 18%
+}
+#idLabel{
+    margin-right: 16%;
+}
+#emailLabel{
+    margin-right: 17.5%;
+}
+#dbLabel{
+    margin-right: 7%;
+}
+#passwordLabel{
+    margin-right: 10.5%;
+}
+#register{
+    position: relative;
+    margin-top: 20px;
+   background-color: darkseagreen;
+    padding: 10px;
+    border-radius: 25px;
+    width: 30%;
+    font-family: Montserrat-Bold;
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 25px;
+  background: orange;
+}
+.check{
+    position: absolute;
+    top: 162px;
+    left: 360px;
+}
+.check:hover {
+  background-color: #717171;
+     background: #E2472F;
+    color: #fff;
+    border-radius: 6px;
+}
+#idContributer{
+    margin-right: 8%;
+}
+.checkLang{
+     position: absolute;
+    top: 90px;
+    left: 360px;
+}
+.checkLang:hover {
+  background-color: #717171;
+     background: #E2472F;
+    color: #fff;
+    border-radius: 6px;
+}
+#description{
+    float: left;
+    margin-top: 20px;
+    box-shadow: 1px 2px 2px 2px gray;
+    margin: 
+}
+#descriptionLabel{
+    margin-right:11%;
+}
+.addContributer{
+    padding: 3px;
+    border-radius: 25px;
+    background: #717171;
+    position: absolute;
+    top: 140px;
+    left: 360px;
+}
+.addContributer:hover {
+    background-color: #717171;
+     background: #E2472F;
+    color: #fff;
+    border-radius: 6px;
+}
 
 
 
