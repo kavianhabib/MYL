@@ -97,15 +97,20 @@
 }
 .topnav{
     background: none;
+    float: left;
+    width: 100%;
 }
+
 .topnavbar .container{
+    width: 100%;
     margin-left: 107px !important;
 }
+
 .toggle-costume{
     float: left;
 }
 #navbarontop{
-    padding-left: 312px;
+    padding-left: 3px;
     padding-top: 17px;
     height: 69px;
 }
@@ -114,6 +119,7 @@
     src: url(../source/fonts/BebasNeue-Regular.otf) format("truetype");
 }
 #navbarontop > li > a {
+    
     font-family: 'BebasNeue Regular';
     font-size: 17px;
     color: #313943;
@@ -125,6 +131,7 @@
     margin-left: 34px;
     border-bottom: 2px solid rgba(0,0,0,0.0);
 }
+
 #navbarontop>li>a:hover{
     background-color: none !important;
     background: none !important;
@@ -181,6 +188,7 @@
 nav{
     display: block;
 }
+
 
 /* NavBarOn Top Media screen */
 
@@ -382,6 +390,7 @@ nav{
 	margin-right: 9px;
 }
 .navbarborder>li>a{
+
 	font-family: "OpenSans Regular";
 	font-size: 13pt;
 	color: #fff !important;
@@ -390,6 +399,7 @@ nav{
 	padding-bottom: 11px;
 	border: 1px solid #fff!important;
 }
+
 .navbarborder>li>a:hover{
 	color: #F8C72D !important;
 	background-color: #fff!important;
@@ -1106,7 +1116,45 @@ height: 30px;
           transition-duration: 0.8s;
 }
 
-
+.mainContent{
+    height: 100%;
+    
+}
+.leftContent{
+    z-index: 1;
+    top: 10%;
+    margin-top: 7.5%;
+    margin-left: 1%;
+    position: fixed;
+    height: 400px;
+    width: 200px;
+    background: gray;
+    border-radius: 25px;
+}
+.middleContent{
+    left: 15%;
+    position: absolute;
+    background: white;
+    height: 85%;
+    margin-top: 7%;
+    width: 70%;
+    
+}
+.rightContent{
+    position: fixed;
+    top: 10%;
+    left: 84%;
+    margin-top: 7.5%;
+    margin-right: 1%;
+    background: gray;
+    height: 400px;
+    width: 200px;
+    border-radius: 25px;
+}
+.active{
+    float: right;
+    margin-left: 800px;
+}
 
 
 
