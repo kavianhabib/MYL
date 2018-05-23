@@ -1,6 +1,6 @@
 <?php
 // Name of the file
-$filename = 'hkaps.sql';
+$filename = 'MYL.sql';
 // MySQL host
 $mysql_host = 'localhost';
 // MySQL username
@@ -8,7 +8,7 @@ $mysql_username = 'grader';
 // MySQL password
 $mysql_password = 'allowme';
 // Database name
-$mysql_database = 'hkaps';
+$mysql_database = 'MYL';
 //Reading the sql file
 mysql_connect($mysql_host, $mysql_username, $mysql_password) or die('Error connecting to MySQL server: ' . mysql_error());
 // Select database
@@ -36,103 +36,26 @@ if (substr(trim($line), -1, 1) == ';')
     $templine = '';
 }
 }
-// (a)
-$sql = "SELECT maker,model,speed FROM PCs P WHERE P.price <= $lowerinputPrice AND P.price >= $upperinputPrice";
-$result = $conn->query($sql);
+// Populate the drop boxes "From" and "To"
+$sql = "SELECT langId FROM languages";
+$result = mysql_query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "maker: " . $row["maker"]. " - model: " . $row["model"]. " " . $row["speed"]. "<br>";
-    }
-} else {
-    echo "0 results";
+echo "<select languages>";
+while ($row = mysql_fetch_array($result)) {
+    echo "<option value='" . $row['langId'] . "'></option>";
 }
+echo "</select>";
 
-//add the back and forth check for multiple entries
-//(b)
-$sql = "SELECT model, speed, ram, hd,screen, price FROM Laptops L WHERE L.speed >= $inputSpeed AND L.ram >= $inputRam AND L.hardDisk >= $inputHd AND L.screen >= $inputScreen ";
-$result = $conn->query($sql);
+$sql = "SELECT langId FROM languages";
+$result = mysql_query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "model: " . $row["model"]. " - speed: " . $row["speed"]."ram: " . $row["ram"]."hd: " . $row["hd"]."screen: " . $row["screen"]."price: " . $row["price"]  "<br>";
-    }
-} else {
-    echo "0 results";
+echo "<select languages>";
+while ($row = mysql_fetch_array($result)) {
+    echo "<option value='" . $row['langId'] . "'></option>";
 }
-//(c)
-$sql = "SELECT model, speed, ram, hd, screen, price FROM Laptops L, Products P WHERE $inputMaker=P.maker AND L.model = P.model ";
-$result = $conn->query($sql);
-echo "All available laptops from the maker " .$inputMaker
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "model: " . $row["model"]. " - speed: " . $row["speed"]."ram: " . $row["ram"]."hd: " . $row["hd"]."screen: " . $row["screen"]."price: " . $row["price"]  "<br>";
-    }
-} else {
-    echo "0 results";
-}
-$sql = "SELECT model, speed, ram, hd,  price FROM PCs C, Products P WHERE $inputMaker=P.maker AND C.model = P.model ";
-$result = $conn->query($sql);
-echo "All available PCs from the maker " .$inputMaker
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "model: " . $row["model"]. " - speed: " . $row["speed"]."ram: " . $row["ram"]."hd: " . $row["hd"]."price: " . $row["price"]  "<br>";
-    }
-} else {
-    echo "0 results";
-}
-//(d)
-$sql = "SELECT C.model,P.model FROM PCs C, Printers P WHERE $inputBudget>=P.price+C.price AND C.speed>=$inputSpeed ";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "model of PCs: " . $row["C.model"]. " model of Printers: " . $row["P.model"]  "<br>";
-    }
-} else {
-    echo "0 results";
-}
-//(e)
-$sql = "SELECT model FROM PCs C, Laptops L, Products P WHERE P.model = $inputModel AND P.model = $inputModel OR C.model = inputModel AND $inputBudget = L.price OR 
-        $inputBudget = C.price AND $inputRam = L.ram OR $inputRam = C.ram AND $inputSpeed = L.speed OR $inputSpeed = C.speed AND
-		$inputMaker = P.maker AND $inputHd = L.hd OR $inputHd = C.hd";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "model : " . $row["model"]  "<br>";
-    }
-	echo "The Product is already in the Database"
-} else {
-    $sql = "INSERT INTO Products (maker, model, type)
-	VALUES ('$inputMaker', '$inputModel', 'unknown');";
-	$sql .= "INSERT INTO PCs (model, speed, ram, hd, price)
-	VALUES ('$inputModel', '$inputSpeed', '$inputRam', '$inputHd '$inputBudget');";
-	$sql .= "INSERT INTO Laptops (model, speed, ram, hd, screen, price)
-	VALUES ('$inputModel', '$inputSpeed', '$inputRam', $inputHd', 'unknown', '$inputBudget');";
-	
-	if ($conn->multi_query($sql) === TRUE) {
-    echo "New PC added successfully";
-	} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-}
-
-
-
-
-
-
-
+echo "</select>";
 
 
 mysqli_close($conn);
 
-
-
- 
 ?>

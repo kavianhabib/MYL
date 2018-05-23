@@ -17,7 +17,7 @@ CREATE TABLE userLogin (
 		dob DATE,
 		email VARCHAR (256) NOT NULL,
 		password VARCHAR (256) NOT NULL,
-		photoName VARCHAR (256) NOT NULL
+		photoName VARCHAR (256) NOT NULL,
 		PRIMARY KEY(userId)
 );
 
@@ -39,10 +39,8 @@ CREATE TABLE users (
 		langId VARCHAR(256) NOT NULL,
 		userType VARCHAR(256),
 		wordsInput INTEGER,
-		FOREIGN KEY userId REFERENCING UserLogin
-		ON DELETE CASCADE,
-		FOREIGN KEY langId REFERENCING Languages 
-		ON DELETE CASCADE,
+		/*FOREIGN KEY (userId) REFERENCES UserLogin(userId),
+		FOREIGN KEY (langId) REFERENCES Languages (langId),*/
 		PRIMARY KEY(userId, langId)
 );
 
@@ -59,15 +57,15 @@ CREATE TABLE wordReliability (
 );
 
 
-INSERT INTO userLogin (userId, name,dob,email,password,photoName) VALUES ("rahelEZ", "Rahel Zewde", December 22, 1998, "rahelermias10@gmail.com", "CSE305", "rahelEZ.png");
-INSERT INTO userLogin (userId, name,dob,email,password,photoName) VALUES ("habibKv", "Habib Kaviani", February 23, 1996, "habibkv@gmail.com", "CSE3052", "habibKv.png");
-INSERT INTO userLogin (userId, name,dob,email,password,photoName) VALUES  ("alee", "Ali lee", October 10, 1984, "alee@gmail.com", "CSE3053", "alee.png");
-INSERT INTO userLogin (userId, name,dob,email,password,photoName) VALUES  ("jdoe", "John Doe", August 25, 1942, "jdoe@gmail.com", "CSE3054", NULL);
+INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES ("rahelEZ", "Rahel Zewde", 1998-12-22, "rahelermias10@gmail.com", "CSE305", "rahelEZ.png");
+INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES ("habibKv", "Habib Kaviani", 1996-02-13, "habibkv@gmail.com", "CSE3052", "habibKv.png");
+INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES  ("alee", "Ali lee", 1984-10-10, "alee@gmail.com", "CSE3053", "alee.png");
+INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES  ("jdoe", "John Doe", 1942-08-25, "jdoe@gmail.com", "CSE3054", NULL);
 
-INSERT INTO Languages (langId,userIdId,wordsCount) VALUES ("clingon","rahelEZ",4);
-INSERT INTO Languages (langId,userIdId,wordsCount) VALUES ("Rokak","habibKv",20);
-INSERT INTO Languages (langId,userIdId,wordsCount) VALUES ("bliob","alee",200);
-INSERT INTO Languages (langId,userIdId,wordsCount) VALUES ("janey","jdoe",1);
+INSERT INTO Languages (langId,userId,wordsCount) VALUES ("clingon","rahelEZ",4);
+INSERT INTO Languages (langId,userId,wordsCount) VALUES ("Rokak","habibKv",20);
+INSERT INTO Languages (langId,userId,wordsCount) VALUES ("bliob","alee",200);
+INSERT INTO Languages (langId,userId,wordsCount) VALUES ("janey","jdoe",1);
 
 INSERT INTO languagesRank (wordsCount,langRank) VALUES (100,1);
 INSERT INTO languagesRank (wordsCount,langRank) VALUES (50,2);
