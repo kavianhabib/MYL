@@ -1266,7 +1266,43 @@ height: 30px;
     color: #fff;
     border-radius: 6px;
 }
-
+#idContributer{
+    margin-right: 8%;
+}
+.checkLang{
+     position: absolute;
+    top: 90px;
+    left: 360px;
+}
+.checkLang:hover {
+  background-color: #717171;
+     background: #E2472F;
+    color: #fff;
+    border-radius: 6px;
+}
+#description{
+    float: left;
+    margin-top: 20px;
+    box-shadow: 1px 2px 2px 2px gray;
+    margin: 
+}
+#descriptionLabel{
+    margin-right:11%;
+}
+.addContributer{
+    padding: 3px;
+    border-radius: 25px;
+    background: #717171;
+    position: absolute;
+    top: 140px;
+    left: 360px;
+}
+.addContributer:hover {
+    background-color: #717171;
+     background: #E2472F;
+    color: #fff;
+    border-radius: 6px;
+}
 
 
 
