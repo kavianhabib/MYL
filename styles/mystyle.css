@@ -1033,15 +1033,29 @@ height: 30px;
  
 }
 .copyright{
-	float:left;
+	float:right;
 	padding-left: 10%;
 	padding-top: 5px;
+    margin-right: 20px;
 }
 .atisda{
 	float: right;
 	padding-right: 10%;
 	padding-top: 5px;
 	text-decoration: none;
+}
+.infoLinks{
+    float:left;
+    padding-top: 5px;
+    padding-left: 10%;
+    margin-left: 20px;
+}
+.links{
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    
 }
 .copyright>a{
 	color: #fff;
