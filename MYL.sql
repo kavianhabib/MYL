@@ -37,7 +37,8 @@ CREATE TABLE languagesRank (
 CREATE TABLE users (
 		userId VARCHAR(256) NOT NULL,
 		langId VARCHAR(256) NOT NULL,
-		userType VARCHAR(256),
+		contributor BOOLEAN,
+        owner BOOLEAN,
 		wordsInput INTEGER,
 		/*FOREIGN KEY (userId) REFERENCES UserLogin(userId),
 		FOREIGN KEY (langId) REFERENCES Languages (langId),*/
