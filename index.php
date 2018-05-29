@@ -10,6 +10,7 @@ Email : rahel.zewde@stonybrook.edu
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -205,16 +206,16 @@ Email : rahel.zewde@stonybrook.edu
                             $toWord = $toWord. " ". $rowTo['word'];
                         }
                         else{
-                            echo "<textarea id=\"toText\" Translation not found :( </textarea>";
+                            echo "it is not working";
                         }
 
                     } else {
-                        echo "<textarea id=\"toText\" Translation not found :( </textarea>";
+                        echo "it is not working";
                     }
                 } 
-                echo "<textarea id=\"toText\" " .$toWord . "</textarea>";
+                echo "<textarea row = \"4\" cols = \"80\" style=\" position:relative; width:44%; left: 95px; top:-230px;\" method=\"POST\"  name=\"toText\" class = \"textArea\" id = \"toTextArea\" placeholder=\"Our projections...\">".$toWord."</textarea>";
             }
-                
+            
             function login(){
 				$conn = new mysqli("localhost", "root", "", "MYL");
 				$userId = $_POST['id'];

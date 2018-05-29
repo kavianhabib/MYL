@@ -654,4 +654,7 @@ label{
     height: 200px;
     width: 200px;
 }
-
+#toTextArea{
+    position: relative;
+    width: 50%;
+}
