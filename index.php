@@ -79,64 +79,7 @@ Email : rahel.zewde@stonybrook.edu
                                 
                             </select></div>
                             <div><textarea row = "4" cols = "80" name="fromText" method="POST"  class = "textArea"id = "fromTextArea" placeholder="Your thoughts..."></textarea>
-                            <textarea row = "4" cols = "80" method="POST"  name="toText" class = "textArea" id = "toTextArea" placeholder="Our projections..."></textarea></div>
-                            
-                            <button type="submit" name="translate" method="POST" value="submit" id = "search">Search</button>
-                            
-                            
-                        </form>
-
-                        <form method="POST" class="login100-form validate-form">
-                            <div class="login100-pic js-tilt" data-tilt>
-                                <img src="images/img-01.png" alt="IMG">
-                                <span class="login100-form-title">
-                                Member Login
-                            </span>
-                            </div>
-                            
-                            <div class="wrap-input100 validate-input" data-validate = "Valid id is required: ex@abc.xyz">
-                                <input class="input100" type="text" name="id" method="POST" placeholder="User ID">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </span>
-                            </div>
-
-                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                <input class="input100" type="password" method="POST" name="password" placeholder="Password">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-
-                            <div class="container-login100-form-btn">
-                                <button class="login100-form-btn" method="POST" name ="login">
-                                    Login
-                                </button>
-                            </div>
-							
-							
-                            <div class="text-center p-t-12">
-                                <span class="txt1">
-                                    Forgot
-                                </span>
-                                <a class="txt2" name ="forgot"  method="POST"  href="#">
-                                    Username / Password?
-                                </a>
-                            </div>
-
-                            <div class="text-center p-t-136">
-                                <a class="txt2" name="create"  method="POST"  href="#">
-                                    Create your Account
-                                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-			<!-- ________________________________________________PHP  ______________________________-->
+                                	<!-- ________________________________________________PHP  ______________________________-->
 			<?php
             $servername = "localhost";
 			$username = "root";
@@ -213,7 +156,7 @@ Email : rahel.zewde@stonybrook.edu
                         echo "it is not working";
                     }
                 } 
-                echo "<textarea row = \"4\" cols = \"80\" style=\" position:relative; width:44%; left: 95px; top:-230px;\" method=\"POST\"  name=\"toText\" class = \"textArea\" id = \"toTextArea\" placeholder=\"Our projections...\">".$toWord."</textarea>";
+                echo "<textarea row = \"4\" cols = \"80\"  method=\"POST\"  name=\"toText\" class = \"textArea\" id = \"toTextArea\" placeholder=\"Our projections...\">".$toWord."</textarea>";
             }
             
             function login(){
@@ -225,11 +168,12 @@ Email : rahel.zewde@stonybrook.edu
                 $result = mysqli_query($conn, $sql2);
 				$row_number = $result->num_rows;
                 if ($row_number == 1) {
-                    header('Location: user.php'); 
+                    
 					echo "correct user";
                 }
                 else{
                     //print underneath
+                    header('Location: invalidUser.php'); 
                     echo "Invalid UserId or Password";
                 }                
             }     
@@ -243,7 +187,64 @@ Email : rahel.zewde@stonybrook.edu
             mysqli_close($conn);
 			
             ?>
-	
+                            </div>
+                            
+                            <button type="submit" name="translate" method="POST" value="submit" id = "search">Search</button>
+                            
+                            
+                        </form>
+
+                        <form method="POST" class="login100-form validate-form" action="user.php">
+                            <div class="login100-pic js-tilt" data-tilt>
+                                <img src="images/img-01.png" alt="IMG">
+                                <span class="login100-form-title">
+                                Member Login
+                            </span>
+                            </div>
+                            
+                            <div class="wrap-input100 validate-input" data-validate = "Valid id is required: ex@abc.xyz">
+                                <input class="input100" type="text" name="id" method="POST" placeholder="User ID">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                <input class="input100" type="password" method="POST" name="password" placeholder="Password">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" method="POST" name ="login">
+                                    Login
+                                </button>
+                            </div>
+							
+							
+                            <div class="text-center p-t-12">
+                                <span class="txt1">
+                                    Forgot
+                                </span>
+                                <a class="txt2" name ="forgot"  method="POST"  href="#">
+                                    Username / Password?
+                                </a>
+                            </div>
+
+                            <div class="text-center p-t-136">
+                                <a class="txt2" name="create"  method="POST"  href="#">
+                                    Create your Account
+                                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+		
             <!-- ______________________________________________________Bottom Menu ______________________________-->
           
                 

@@ -37,10 +37,12 @@ CREATE TABLE languagesRank (
 CREATE TABLE users (
 		userId VARCHAR(256) NOT NULL,
 		langId VARCHAR(256) NOT NULL,
-		contributor BOOLEAN,
+		userType VARCHAR(256),
+		wordsInput INTEGER,
+		/*contributor BOOLEAN,
         owner BOOLEAN,
 		wordsInput INTEGER,
-		/*FOREIGN KEY (userId) REFERENCES UserLogin(userId),
+		FOREIGN KEY (userId) REFERENCES UserLogin(userId),
 		FOREIGN KEY (langId) REFERENCES Languages (langId),*/
 		PRIMARY KEY(userId, langId)
 );
@@ -62,6 +64,8 @@ INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES ("r
 INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES ("habibKv", "Habib Kaviani", 1996-02-13, "habibkv@gmail.com", "CSE3052", "habibKv.png");
 INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES  ("alee", "Ali lee", 1984-10-10, "alee@gmail.com", "CSE3053", "alee.png");
 INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES  ("jdoe", "John Doe", 1942-08-25, "jdoe@gmail.com", "CSE3054", NULL);
+INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES  ("tak", "John", 1942-08-25, "jd@gmail.com", "1234", "cs.png");
+
 
 INSERT INTO Languages (langId,userId,wordsCount) VALUES ("clingon","rahelEZ",4);
 INSERT INTO Languages (langId,userId,wordsCount) VALUES ("Rokak","habibKv",20);
@@ -104,6 +108,7 @@ CREATE TABLE janey(
 INSERT INTO clingon (word,translation) VALUES ("Selam", "Hello");
 INSERT INTO clingon (word,translation) VALUES ("eza", "There");
 INSERT INTO clingon (word,translation) VALUES ("Sew", "Person");
+
 
 INSERT INTO janey (word,translation) VALUES ("Annyong", "Hello");
 INSERT INTO janey (word,translation) VALUES ("Igo", "There");

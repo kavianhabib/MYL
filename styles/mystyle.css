@@ -1118,6 +1118,8 @@ height: 30px;
 
 .mainContent{
     height: 100%;
+    width: 100%;
+    text-align: center;
     position: relative;
     text-align: center;
     
@@ -1134,14 +1136,20 @@ height: 30px;
     border-radius: 25px;
 }
 .middleContent{
-    left: 15%;
-    position: absolute;
+    left: 20%;
+    position: relative;
+    text-align: center;
     background: white;
     height: 85%;
-    margin-top: 7%;
+    margin-top: 10%;
     width: 70%;
     
 }
+.dictionaryDisplay{
+    position: relative;
+    background: rgba(0,0,0,0.5);
+}
+
 .rightContent{
     position: fixed;
     top: 10%;
@@ -1304,6 +1312,11 @@ height: 30px;
     border-radius: 6px;
 }
 
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 
 
  
