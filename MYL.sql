@@ -89,5 +89,33 @@ INSERT INTO userRank (wordsInput, userRank) VALUES (1, 4);
 INSERT INTO wordReliability VALUES ("owner", TRUE);
 INSERT INTO wordReliability VALUES ("contributer", FALSE);
 
+CREATE TABLE clingon(
+	word VARCHAR(256) NOT NULL,
+	translation VARCHAR(256) NOT NULL,
+	PRIMARY KEY (word)
+);
+
+CREATE TABLE janey(
+	word VARCHAR(256) NOT NULL,
+	translation VARCHAR(256) NOT NULL,
+	PRIMARY KEY (word)
+);
+
+INSERT INTO clingon (word,translation) VALUES ("Selam", "Hello");
+INSERT INTO clingon (word,translation) VALUES ("eza", "There");
+INSERT INTO clingon (word,translation) VALUES ("Sew", "Person");
+
+INSERT INTO janey (word,translation) VALUES ("Annyong", "Hello");
+INSERT INTO janey (word,translation) VALUES ("Igo", "There");
+INSERT INTO janey (word,translation) VALUES ("Saram", "Person");
+
+CREATE TABLE contributor(
+	userId VARCHAR(256) NOT NULL,
+	langId VARCHAR(256) NOT NULL,
+	PRIMARY KEY (userId,langId),
+	FOREIGN KEY (langId) REFERENCES languages(langId) ON DELETE CASCADE
+);
+
+
 
 
