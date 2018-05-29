@@ -113,8 +113,7 @@ Email : rahel.zewde@stonybrook.edu
                 $row_number = $result->num_rows;
                 echo $row_number;
                 echo "<div class = \"middleContent\" style = \"position:relative;background: rgba(0,0,0,0.2); border-radius: 15px;float:left;
-                overflow-y: auto;
-                height: 50%; text-align:center; box-shadow:2px 2px 2px gray;\">";
+                overflow-y: auto;height: 50%; text-align:center; box-shadow:2px 2px 2px gray;\">";
                
                 echo "<table style=\"position:relative; width: 100%;\">";
                 if($row_number > 0){
@@ -130,8 +129,8 @@ Email : rahel.zewde@stonybrook.edu
 
                 echo "</div>";
                
-                echo "<div style = \"position:relative; width:100%; float:left;\"><input class=\"input100\" type=\"text\" id = \"word\"name=\"word\" method=\"POST\" placeholder=\"Word\" style= \"position:relative; width: 35%; height:40px; margin:10px; top:30px;left:22%;\">";
-                echo "<input class=\"input100\" type=\"text\" id = \"tran\"name=\"translation\" method=\"POST\" placeholder=\"Translation\" style= \"position:relative; width: 35%; height:40px; margin:10px; top:30px; left:22%;\">
+                echo "<div style = \"position:relative; width:100%; float:left;\"><input class=\"input100\" type=\"text\" id = \"word\"name=\"word\" method=\"POST\" placeholder=\"Word\" style= \"position:relative; width: 35%; height:40px; margin:10px; top:30px; left:15%;\">";
+                echo "<input class=\"input100\" type=\"text\" id = \"tran\"name=\"translation\" method=\"POST\" placeholder=\"Translation\" style= \"position:relative; width: 35%; height:40px; margin:10px; top:30px;left:15%; \">
                 <button style=\"position:relative;top:-38px; left:15%; width:80px; height:30px; background: gray; border-radius:20px;color:white;\">ADD</button></div>";
                 
                 
