@@ -46,43 +46,43 @@ Email : rahel.zewde@stonybrook.edu
                       
         </div>
 
-<!----------------------------- Whole content ---------------->
+    <!----------------------------- Whole content ---------------->
     <div class = "mainContent">
         <?php
-			
-			if(empty($languageName)){
-				global $languageName;
-			    $languageName= "languageName";
-				echo $languageName." before setting";
+			if(!(isset($newUserId))){
+			    $newUserId= "UserId";
+				//echo $newUserId." before setting";
 			}
-				else{
-					echo $languageName." is set";
-				}
-				if(!(isset($contributorId))){
-					$contributorId= "contributorId";
-					echo $contributorId." before setting";
-				}
-				else{
-					echo $contributorId." is set";
-				}
+			else{
+				echo $newUserId." is set";
+			}
 		?>
 				
         <div class = "registerFrame">
             <p>
-            <p>Create New Language</p>
+            <p>Create New Account</p>
             <form method="POST" class = "formController">
-				 <label id = "nameLabel">Name: </label>
-               <input type="text" id = "name" method="POST" name="languageNames" value="<?php echo $languageName ?>" />
+				
+				<label id = "newUserId"> User Id: </label>
+                <input type="text" name= "newUserId" id = "newUserId"  value="<?php echo $newUserId?>" />
+				<!--I gave the $newUserId as a value to hold the place after they click the validate button. It's not working tho :( -->
+                <button name="validatenewId" class = "validateId"><img src = "images/check.svg"></button>
                 <span class="underline"></span>
-                <label id = "idContributer">Contributer: </label>
-                <input type="text" name= "contributorId" id = "id" placeholder = "User ID" value="<?php echo $contributorId?>" />
-                <button name="addContributor" class = "addContributer"><img src = "images/add.svg"></button>
+				<label id = "fullName" > Full Name: </label>
+               <input type="text" id = "newUserName" method="POST" name="newUserName" placeholder= "Jane Doe"/>
                 <span class="underline"></span>
-                <button name="checkLang" class = "checkLang"><img src = "images/check.svg"></button>
-                <label id = "descriptionLabel">Description: </label>
-                <textarea id = "description" name="description" rows = "15" cols="30"></textarea>
-                
-                <button name="submit" method="POST" type="submit" id ="register">Submit</button>
+				<label id = "email"> Email: </label>
+               <input type="text" id = "newEmail" method="POST" name="newEmail" placeholder= "abc@xyz.com"/>
+                <span class="underline"></span>
+				<label id = "dob">Date of Birth: </label>
+               <input type="text" id = "newDob" method="POST" name="newDob" placeholder= "YYYY-MM-DD" />
+                <span class="underline"></span>
+				<label id = "password"> Password: </label>
+               <input type="password" id = "newPassword" method="POST" name="newPassword" placeholder = "Password" />
+                <span class="underline"></span>
+				
+				<button name="createAccount" type="create" id ="register">Create</button>
+               
             </form>
         </div>
         
@@ -107,75 +107,46 @@ Email : rahel.zewde@stonybrook.edu
 			
 		
            
-           // $checkLang = $_POST['checkLang'];  
+           // $newUserId = $_POST['newUserId'];  
             //Finding the right button click b/n checklang and addContributor
-				echo "this \n";
-                if(isset($_POST['checkLang'])){
-					global $languageName;
-					echo $languageName." in isSet checking function \n";
-					$languageName = $_POST['languageNames'];
-					echo $languageName;
-					echo "checking";
-                     checkLang();
-					
+				echo "this";
+                if(isset($_POST['validatenewId'])){
+                    checkId();
                 }
-				elseif(isset($_POST['addContributor'])){
-					echo "adding";
-                    addContributor();
+				elseif(isset($_POST['createAccount'])){
+                    createAccount();
                 }
-				elseif(isset($_POST['create'])){
-                    create();
-                } 
-            function addContributor(){
+				
+           
+            function checkId(){
 				$conn = new mysqli("localhost", "root", "", "MYL");
-				global $contributorId;
-			     $contributorId = $_POST['ConotributorId'];
-                $sql="SELECT userId FROM userLogin WHERE userId \" " .$contributorId. "\" ;";
-				echo $sql;
-                $result = mysqli_query($conn, $sql);
-
-                $row_number = $result->num_rows;
-
-                echo $sql;
-                if ($row_number = 1 ) {
-	                $sqlAdd = "INSERT INTO contributor (userId,langId) VALUES ( \"".$contributorId." \", \" " .$languageName. " \" );" ;  
-                    $resultUpdate = mysqli_query($conn, $sqlAdd);
-                    $sqlUpdate = "Update users set contributor=TRUE where userId = \"".$contributor. "\" ;";
-                 }
-                else{
-                    echo "invalid userId";
-                }
-            }
-            function checkLang(){
-				global $languageName;
-				$conn = new mysqli("localhost", "root", "", "MYL");
-				$languageName = $_POST['languageNames'];
-				$description = $_POST['description'];
-                $sql="select langId from languages where langId = \"".$languageName. "\" ;" ;
+				$newUserId = $_POST['newUserId'];
+                $sql="select userId from userLogin where userId = \"".$newUserId. "\" ;" ;
                 $result = mysqli_query($conn, $sql);
 
                 $row_number = $result->num_rows;
 				echo $row_number;
                 echo $sql;
                 if ($row_number == 1 ) {
-                    echo "Language already exists! Please choose another name";
+                    echo "userId already exists! Please choose another id";
                 }
                 else{
-                    echo "Language name available";
+                    echo "userId available";
                 }
             }
-			function create(){
-				$languageName = $_POST['languageNames'];
-				$description = $_POST['description'];
-				$sql="create table " .$languageName. "(
-                            word VARCHAR(256) NOT NULL,
-                            translation VARCHAR(256) NOT NULL,
-                            PRIMARY KEY (word)
-                        );";
-						echo $sql;
-                    $result = mysqli_query($conn, $sql);
-                    $ownerUserId=$_POST['id'];
-                    $sql="insert into languages(langId,userId) values ( \" " .$languageName. "\", \" ".$ownerUserId. " \" ;"; 
+			
+			function createAccount(){
+				$conn = new mysqli("localhost", "root", "", "MYL");
+				$newUserId = $_POST['newUserId'];
+				$newUserName= $_POST['newUserName'];
+				$newEmail=$_POST['newEmail'];
+				$newDob = $_POST['newDob'];
+				$newPassword = $_POST['newPassword'];
+				$sql= "insert into userLogin(userId,userName,email,dob,password,photoName) values ( \"" .$newUserId. "\", \"".$newUserName. "\", \"".$newEmail."\", \""
+				.$newDob."\", \"".$newPassword."\", \"photo.png \");" ;
+				echo $sql;
+                $result = mysqli_query($conn, $sql);
+                 
 			}
         ?>
    

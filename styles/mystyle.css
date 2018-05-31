@@ -1136,8 +1136,8 @@ height: 30px;
     border-radius: 25px;
 }
 .middleContent{
+    left: 20%;
     position: relative;
-    left:15%;
     text-align: center;
     background: white;
     height: 85%;

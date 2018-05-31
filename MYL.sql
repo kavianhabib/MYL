@@ -25,6 +25,7 @@ CREATE TABLE languages (
 		langId VARCHAR(256) NOT NULL,
 		userId VARCHAR(256) NOT NULL,
 		wordsCount INTEGER,
+		description VARCHAR(256);
 		PRIMARY KEY(langId)
 );
 
@@ -67,10 +68,10 @@ INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES  ("
 INSERT INTO userLogin (userId, userName,dob,email,password,photoName) VALUES  ("tak", "John", 1942-08-25, "jd@gmail.com", "1234", "cs.png");
 
 
-INSERT INTO Languages (langId,userId,wordsCount) VALUES ("clingon","rahelEZ",4);
-INSERT INTO Languages (langId,userId,wordsCount) VALUES ("Rokak","habibKv",20);
-INSERT INTO Languages (langId,userId,wordsCount) VALUES ("bliob","alee",200);
-INSERT INTO Languages (langId,userId,wordsCount) VALUES ("janey","jdoe",1);
+INSERT INTO Languages (langId,userId,wordsCount,description) VALUES ("clingon","rahelEZ",4,"Oh well, if you like it just use it");
+INSERT INTO Languages (langId,userId,wordsCount,description) VALUES ("Rokak","habibKv",20,"Thisis an awesome language");
+INSERT INTO Languages (langId,userId,wordsCount, description) VALUES ("bliob","alee",200,"This is only for CS people");
+INSERT INTO Languages (langId,userId,wordsCount, description) VALUES ("janey","jdoe",1,"Janey used to speak this");
 
 INSERT INTO languagesRank (wordsCount,langRank) VALUES (100,1);
 INSERT INTO languagesRank (wordsCount,langRank) VALUES (50,2);

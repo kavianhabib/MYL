@@ -7,6 +7,7 @@ SID : 111250334
 Email : rahel.zewde@stonybrook.edu
 
 -->
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -79,25 +80,25 @@ Email : rahel.zewde@stonybrook.edu
                                 
                             </select></div>
                             <div><textarea row = "4" cols = "80" name="fromText" method="POST"  class = "textArea"id = "fromTextArea" placeholder="Your thoughts..."></textarea>
-                                	<!-- ________________________________________________PHP  ______________________________-->
+                         <!-- ________________________________________________PHP  ______________________________-->
 			<?php
+			
             $servername = "localhost";
 			$username = "root";
 			$password = "";
 			$database = "MYL";
 			// Create connection
 			$conn = new mysqli($servername, $username, $password, $database);
-
+				
 			// Check connection
 			if ($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error);
 			} 
 			echo "Connected successfully";
 			//Values
-            
-           
-                
+			
             //Finding the right button click b/n login and translate
+			
                 if(isset($_POST['translate'])){
 					echo "translating";
                      translate();
@@ -115,7 +116,7 @@ Email : rahel.zewde@stonybrook.edu
             
 
             function translate(){
-			$conn = new mysqli("localhost", "root", "", "MYL");
+			 $conn = new mysqli("localhost", "root", "", "MYL");
             // handeling translation
 			 $fromText = $_POST['fromText'];
 			 echo $fromText;
@@ -161,14 +162,19 @@ Email : rahel.zewde@stonybrook.edu
             
             function login(){
 				$conn = new mysqli("localhost", "root", "", "MYL");
-				$userId = $_POST['id'];
-				$password = $_POST['password'];
+				$userId =$_POST['id'];
+				$password =$_POST['password'];
+				
+				//$userId = $_POST['id'];
+				//$password = $_POST['password'];
+				
                 $sql2 = "SELECT password FROM userLogin WHERE userId = \"" .$userId. "\" AND password = \"".$password. "\" ;" ;
 				echo $sql2;
                 $result = mysqli_query($conn, $sql2);
 				$row_number = $result->num_rows;
                 if ($row_number == 1) {
-                    
+					$_SESSION['userId'] = $userId; // store username
+					header('Location: new_lang.php');
 					echo "correct user";
                 }
                 else{
@@ -178,7 +184,7 @@ Email : rahel.zewde@stonybrook.edu
                 }                
             }     
             function forgot(){
-                header('Location: forgot.php'); 
+                header('Location: invalidUser.php'); 
             }
             function create(){
                 header('Location: create.php'); 
@@ -187,14 +193,14 @@ Email : rahel.zewde@stonybrook.edu
             mysqli_close($conn);
 			
             ?>
-                            </div>
+                        </div>
                             
-                            <button type="submit" name="translate" method="POST" value="submit" id = "search">Search</button>
+                        <button type="submit" name="translate" method="POST" value="submit" id = "search">Search</button>
                             
                             
                         </form>
 
-                        <form method="POST" class="login100-form validate-form" action="user.php">
+                        <form method="POST" class="login100-form validate-form" action="new_lang.php">
                             <div class="login100-pic js-tilt" data-tilt>
                                 <img src="images/img-01.png" alt="IMG">
                                 <span class="login100-form-title">
