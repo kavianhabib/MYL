@@ -57,36 +57,8 @@ Email : rahel.zewde@stonybrook.edu
 				echo $newUserId." is set";
 			}
 		?>
-				
-        <div class = "registerFrame">
-            <p>
-            <p>Create New Account</p>
-            <form method="POST" class = "formController">
-				
-				<label id = "newUserId"> User Id: </label>
-                <input type="text" name= "newUserId" id = "newUserId"  value="<?php echo $newUserId?>" />
-				<!--I gave the $newUserId as a value to hold the place after they click the validate button. It's not working tho :( -->
-                <button name="validatenewId" class = "validateId"><img src = "images/check.svg"></button>
-                <span class="underline"></span>
-				<label id = "fullName" > Full Name: </label>
-               <input type="text" id = "newUserName" method="POST" name="newUserName" placeholder= "Jane Doe"/>
-                <span class="underline"></span>
-				<label id = "email"> Email: </label>
-               <input type="text" id = "newEmail" method="POST" name="newEmail" placeholder= "abc@xyz.com"/>
-                <span class="underline"></span>
-				<label id = "dob">Date of Birth: </label>
-               <input type="text" id = "newDob" method="POST" name="newDob" placeholder= "YYYY-MM-DD" />
-                <span class="underline"></span>
-				<label id = "password"> Password: </label>
-               <input type="password" id = "newPassword" method="POST" name="newPassword" placeholder = "Password" />
-                <span class="underline"></span>
-				
-				<button name="createAccount" type="create" id ="register">Create</button>
-               
-            </form>
-        </div>
-        
-    </div>
+		
+
 <!-- ________________________________________________PHP  ______________________________-->
 			<?php      
 			$servername = "localhost";
@@ -119,6 +91,7 @@ Email : rahel.zewde@stonybrook.edu
 				
            
             function checkId(){
+				global $newUserId;
 				$conn = new mysqli("localhost", "root", "", "MYL");
 				$newUserId = $_POST['newUserId'];
                 $sql="select userId from userLogin where userId = \"".$newUserId. "\" ;" ;
@@ -129,6 +102,7 @@ Email : rahel.zewde@stonybrook.edu
                 echo $sql;
                 if ($row_number == 1 ) {
                     echo "userId already exists! Please choose another id";
+					$newUserId = "Invalid UserId";
                 }
                 else{
                     echo "userId available";
@@ -146,11 +120,43 @@ Email : rahel.zewde@stonybrook.edu
 				.$newDob."\", \"".$newPassword."\", \"photo.png \");" ;
 				echo $sql;
                 $result = mysqli_query($conn, $sql);
-                 
+                header('Location: user.php');
 			}
         ?>
    
 <!-- _____________________________Footer ____________________-->
+			
+         <div class = "registerFrame">
+            <p>
+            <p>Create New Account</p>
+            <form method="POST" class = "formController">
+				
+				<label id = "newUserId"> User Id: </label>
+                <input type="text" name= "newUserId" id = "newUserId" <?php if($newUserId==="UserId" || $newUserId==="Invalid UserId"){
+			   echo "placeholder=\"".$newUserId."\"";}
+			   else{
+			   echo "value =\"".$newUserId."\"";}?>" /> 
+				<!--I gave the $newUserId as a value to hold the place after they click the validate button. It's not working tho :( -->
+                <button name="validatenewId" class = "validateId"><img src = "images/check.svg"></button>
+                <span class="underline"></span>
+				<label id = "fullName" > Full Name: </label>
+               <input type="text" id = "newUserName" method="POST" name="newUserName" placeholder= "Jane Doe"/>
+                <span class="underline"></span>
+				<label id = "email"> Email: </label>
+               <input type="text" id = "newEmail" method="POST" name="newEmail" placeholder= "abc@xyz.com"/>
+                <span class="underline"></span>
+				<label id = "dob">Date of Birth: </label>
+               <input type="text" id = "newDob" method="POST" name="newDob" placeholder= "YYYY-MM-DD" />
+                <span class="underline"></span>
+				<label id = "password"> Password: </label>
+               <input type="password" id = "newPassword" method="POST" name="newPassword" placeholder = "Password" />
+                <span class="underline"></span>
+				
+				<button name="createAccount" type="create" id ="register">Create</button>
+               
+            </form>
+        </div>
+	</div>
         <br>
         <div class="allcontain">
 

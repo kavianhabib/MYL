@@ -100,15 +100,15 @@ Email : rahel.zewde@stonybrook.edu
             //Finding the right button click b/n login and translate
 			
                 if(isset($_POST['translate'])){
-					echo "translating";
+					//echo "translating";
                      translate();
                 }
 				elseif(isset($_POST['login'])){
-					echo "loging in";
+					//echo "loging in";
                     login();
                 }
-				elseif(isset($_POST['create'])){
-                    create();
+				elseif(isset($_POST['createNewAccount'])){
+                    createNew();
                 }
 				elseif(isset($_POST['forgot'])){
                     forgot();
@@ -128,19 +128,19 @@ Email : rahel.zewde@stonybrook.edu
               $fromTextArray = explode(" ", $fromText);
                 for ($i=0; $i < count($fromTextArray); $i++) {
                     $sqlTranslate = "SELECT translation FROM " .$fromLang. " WHERE word = \"" .$fromTextArray[$i]. "\" ;" ;
-					echo $sqlTranslate;
+					// echo $sqlTranslate;
 					
                     $resultFrom = mysqli_query($conn, $sqlTranslate);
 
                     $row_numberFrom = $resultFrom->num_rows;
-					echo $row_numberFrom;
+					//echo $row_numberFrom;
                     if ($row_numberFrom = 1) {
                         $rowFrom = $resultFrom ->fetch_assoc();
                       //  $fromWord= $rowFrom['translation'];
 
                         $sqlTo = "SELECT word FROM " .$toLang. " WHERE translation = \"" .$rowFrom['translation']. "\" ;" ;
                         
-                        echo $sqlTo;
+                      //  echo $sqlTo;
                         
                         $resultTo = mysqli_query($conn, $sqlTo);
                         $row_numberTo = $resultTo->num_rows;
@@ -173,21 +173,20 @@ Email : rahel.zewde@stonybrook.edu
                 $result = mysqli_query($conn, $sql2);
 				$row_number = $result->num_rows;
                 if ($row_number == 1) {
-					$_SESSION['userId'] = $userId; // store username
-					header('Location: new_lang.php');
+					header('Location: user.php');
 					echo "correct user";
                 }
                 else{
                     //print underneath
-                    header('Location: invalidUser.php'); 
+                    header('Location: wrongPass.php'); 
                     echo "Invalid UserId or Password";
                 }                
             }     
             function forgot(){
-                header('Location: invalidUser.php'); 
+                header('Location: wrongPass.php'); 
             }
-            function create(){
-                header('Location: create.php'); 
+            function createNew(){
+                header('Location: create_account.php'); 
             }
         
             mysqli_close($conn);
@@ -200,7 +199,7 @@ Email : rahel.zewde@stonybrook.edu
                             
                         </form>
 
-                        <form method="POST" class="login100-form validate-form" action="new_lang.php">
+                        <form method="POST" class="login100-form validate-form">
                             <div class="login100-pic js-tilt" data-tilt>
                                 <img src="images/img-01.png" alt="IMG">
                                 <span class="login100-form-title">
@@ -241,7 +240,7 @@ Email : rahel.zewde@stonybrook.edu
                             </div>
 
                             <div class="text-center p-t-136">
-                                <a class="txt2" name="create"  method="POST"  href="#">
+                                <a class="txt2" name="createNewAccount"  method="POST"  href="#">
                                     Create your Account
                                     <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                                 </a>

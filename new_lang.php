@@ -55,38 +55,24 @@ Email : rahel.zewde@stonybrook.edu
 			    $languageName= "languageName";
 				echo $languageName." before setting";
 			}
-				else{
-					echo $languageName." is set";
-				}
-				if(!(isset($contributorId))){
-					$contributorId= "contributorId";
-					echo $contributorId." before setting";
-				}
-				else{
-					echo $contributorId." is set";
-				}
-		?>
+			else{
+				global $languageName;
+				$languageName=$_POST['languageNames'];
+				echo $languageName."after setting";
+			}
+			if(empty($contributorId)){
+				global $contributorId;
+			    $contributorId= "contributorId";
+				echo $contributorId." before setting";
+			}
+			else{
+				global $contriubtorId;
+				$contriubtorId=$_POST['contributorId'];
+				echo $contributorId."after setting";
+			}
 				
-        <div class = "registerFrame">
-            <p>
-            <p>Create New Language</p>
-            <form method="POST" class = "formController">
-				 <label id = "nameLabel">Name: </label>
-               <input type="text" id = "name" method="POST" name="languageNames" value="<?php echo $languageName ?>" />
-                <span class="underline"></span>
-                <label id = "idContributer">Contributer: </label>
-                <input type="text" name= "contributorId" id = "id" placeholder = "User ID" value="<?php echo $contributorId?>" />
-                <button name="addContributor" class = "addContributer"><img src = "images/add.svg"></button>
-                <span class="underline"></span>
-                <button name="checkLang" class = "checkLang"><img src = "images/check.svg"></button>
-                <label id = "descriptionLabel">Description: </label>
-                <textarea id = "description" name="description" rows = "15" cols="30"></textarea>
-                
-                <button name="submit" method="POST" type="submit" id ="register">Submit</button>
-            </form>
-        </div>
-        
-    </div>
+		?>
+		
 <!-- ________________________________________________PHP  ______________________________-->
 			<?php      
 			$servername = "localhost";
@@ -109,45 +95,46 @@ Email : rahel.zewde@stonybrook.edu
            
            // $checkLang = $_POST['checkLang'];  
             //Finding the right button click b/n checklang and addContributor
-				echo "this \n";
                 if(isset($_POST['checkLang'])){
-					global $languageName;
-					echo $languageName." in isSet checking function \n";
-					$languageName = $_POST['languageNames'];
-					echo $languageName;
-					echo "checking";
                      checkLang();
-					
                 }
 				elseif(isset($_POST['addContributor'])){
-					echo "adding";
                     addContributor();
                 }
 				elseif(isset($_POST['create'])){
                     create();
                 } 
+				
+				
             function addContributor(){
 				$conn = new mysqli("localhost", "root", "", "MYL");
 				global $contributorId;
-			     $contributorId = $_POST['ConotributorId'];
-                $sql="SELECT userId FROM userLogin WHERE userId \" " .$contributorId. "\" ;";
+				if(isset($_POST['languageNames'])){
+					$languageName = $_POST['languageName'];
+				}
+				$contributorId=$_POST['contributorId'];
+                $sql="SELECT userId FROM userLogin WHERE userId =\"" .$contributorId. "\" ;";
 				echo $sql;
                 $result = mysqli_query($conn, $sql);
 
                 $row_number = $result->num_rows;
 
-                echo $sql;
-                if ($row_number = 1 ) {
+                if ($row_number == 1 ) {
 	                $sqlAdd = "INSERT INTO contributor (userId,langId) VALUES ( \"".$contributorId." \", \" " .$languageName. " \" );" ;  
                     $resultUpdate = mysqli_query($conn, $sqlAdd);
-                    $sqlUpdate = "Update users set contributor=TRUE where userId = \"".$contributor. "\" ;";
+                    $sqlUpdate = "Update users set contributor=TRUE where userId = \"".$contributorId. "\" ;";
                  }
                 else{
+					$contributorId="Invalid UserId";
                     echo "invalid userId";
                 }
             }
             function checkLang(){
 				global $languageName;
+				
+				if(isset($_POST['contributorId'])){
+					$contributorId = $_POST['contributorId'];
+				}
 				$conn = new mysqli("localhost", "root", "", "MYL");
 				$languageName = $_POST['languageNames'];
 				$description = $_POST['description'];
@@ -158,6 +145,7 @@ Email : rahel.zewde@stonybrook.edu
 				echo $row_number;
                 echo $sql;
                 if ($row_number == 1 ) {
+					$languageName="Unavailable Name";
                     echo "Language already exists! Please choose another name";
                 }
                 else{
@@ -175,10 +163,37 @@ Email : rahel.zewde@stonybrook.edu
 						echo $sql;
                     $result = mysqli_query($conn, $sql);
                     $ownerUserId=$_POST['id'];
-                    $sql="insert into languages(langId,userId) values ( \" " .$languageName. "\", \" ".$ownerUserId. " \" ;"; 
+                    $sql="insert into languages(langId,userId) values ( \" " .$languageName. "\", \" ".$ownerUserId. " \" , \" ".$description. " \" ;"; 
 			}
         ?>
-   
+			
+        <div class = "registerFrame">
+            <p>
+            <p>Create New Language</p>
+            <form method="POST" class = "formController">
+				<label id = "nameLabel">Name: </label>
+               <input type="text" id = "name" method="POST" name="languageNames" 
+			   <?php if($languageName==="languageName" || $languageName==="Unavailable Name"){
+			   echo "placeholder=\"".$languageName."\"";}
+			   else{
+			   echo "value =\"".$languageName."\"";}?>" />
+                <span class="underline"></span>
+                <label id = "idContributer">Contributer: </label>
+                <input type="text" name= "contributorId" id = "id"<?php if($contributorId==="contributorId" || $contributorId==="Invalid UserId"){
+			   echo "placeholder=\"".$contributorId."\"";}
+			   else{
+			   echo "value =\"".$contributorId."\"";}?>" />
+                <button name="addContributor" class = "addContributer"><img src = "images/add.svg"></button>
+                <span class="underline"></span>
+                <button name="checkLang" class = "checkLang"><img src = "images/check.svg"></button>
+                <label id = "descriptionLabel">Description: </label>
+                <textarea id = "description" name="description" rows = "15" cols="30"></textarea>
+                
+                <button name="submit" method="POST" type="submit" id ="register">Submit</button>
+            </form>
+        </div>
+        
+    </div>
 <!-- _____________________________Footer ____________________-->
         <br>
         <div class="allcontain">

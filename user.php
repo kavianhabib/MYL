@@ -84,25 +84,8 @@ Email : rahel.zewde@stonybrook.edu
                 die("Connection failed: " . $conn->connect_error);
             } 
             //echo "Connected successfully";
-            login();
-            function login(){
-                $conn = new mysqli("localhost", "root", "", "MYL");
-                $userId = $_POST['id'];
-                $password = $_POST['password'];
-                $sql2 = "SELECT password FROM userLogin WHERE userId = \"" .$userId. "\" AND password = \"".$password. "\" ;" ;
-                echo $sql2;
-                $result = mysqli_query($conn, $sql2);
-                $row_number = $result->num_rows;
-                if ($row_number == 1) {
-                    $_SESSION['userId']=$userId;
-                    echo "correct user";
-                }
-                else{
-                    //print underneath
-                    header('Location: wrongPass.php'); 
-                    echo "Invalid UserId or Password";
-                }                
-            }
+            $userId=$_POST['id'];
+			echo $userId;
             checkUserDictionaries();
             function checkUserDictionaries(){
                 $conn = new mysqli("localhost", "root", "", "MYL");
@@ -152,7 +135,7 @@ Email : rahel.zewde@stonybrook.edu
 
             function getData(){
                 $conn = new mysqli("localhost", "root", "", "MYL");
-                // handeling translation
+                // getting data
                 $userId = $_POST['id'];
                 $sqlTranslate = "SELECT * FROM  Languages;" ;
                 //echo $sqlTranslate;
