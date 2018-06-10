@@ -1,0 +1,215 @@
+html, body{
+    height: 100%;
+    width: 100%;
+}
+.allContain{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+.leftBar{
+    position: absolute;
+    height: 100%;
+    width: 256px;
+    margin: 0px;
+    background: white;
+    z-index: 1;
+    
+}
+.topBar{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: white;
+    box-shadow: 2px 2px 2px gray;
+    float: left;
+}
+.MYL_logo_image{
+    width: 80px;
+}
+.MYL_logo{
+    color: rgba(0,0,0,0.5);
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 400;
+    float: left;
+    text-align: center;
+}
+.newImage{
+    position: relative;
+    width: 35px;
+    height:35px;
+    margin-right: 15px;
+    margin-left: 0px;
+    
+}
+.newButton{
+    position: relative;
+    border-radius: 25px;
+    margin: 5px;
+    background: rgba(255,255,255,0.7);
+    width: 115px;
+    height: 50px;
+    float: left;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 1px 1px 1px 1px gray;
+    border:0.5px white;
+}
+.newButton:hover{
+    background: rgba(211,211,211,0.5);
+    box-shadow: 3px 3px 3px lightgray;
+}
+.functionalBt{
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: snow;
+    height: 40px;
+    border-radius: 25px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    text-align: left;
+    text-decoration: none;
+    color: rgba(0,0,0,0.7);
+    font-weight: 700;
+    font-family: sans-serif;
+    border:0px gray;
+    
+}
+.functionalBt:hover{
+    background-color: rgba(0,153,153,0.13);
+}
+.functionalBt:active{
+    background-color: rgba(224,224,224,0.7);
+}
+.buttonIcon{
+    position: relative;
+    width: 24px;
+    height: 24px;
+    float: left;
+    margin-right: 25px;
+}
+#searchButton{
+    position: relative;
+    height: 40px;
+    text-align: center;
+    position: relative;
+    top: 5px;
+    border: 0px;
+    margin-top: 15px;
+    margin-left: 0px;
+}
+#searchInput{
+    position: relative;
+    margin-left: 258px;
+    width: 50%;
+    position: relative;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    font-family:sans-serif;
+    border: 0px;
+    background-color: rgba(224,224,224,0.7);
+    margin-top: 15px;
+    margin-right: 0px;
+}
+#searchButton:hover{
+    opacity: 1;
+    color:white;
+    border: 1px solid white;
+    background: #C2CAD0; 
+}
+#searchButton:active{
+    opacity: 0.7;
+    color:darkslategrey;
+    background: #1F2833;
+}
+.topIcon{
+    position: relative;
+    height: 25px;
+    width: 25px;
+}
+.topBt{
+    position: relative;
+    text-align: center;
+    background-color: white;
+    border: 0px;
+    margin-top: 25px;
+    height: 38px;
+    width: 38px;
+    border-radius: 25px;
+    margin: 5px;
+}
+.topBt:hover{
+    background-color: rgba(224,224,224,0.7);
+}
+#profileBt{
+    margin-left: 13%;
+    margin-right: 10px;
+    height: 60px;
+    width: 60px;
+}
+.profilePhoto{
+    position: relative;
+    margin: 0px;
+    height: 40px;
+    width: 40px;
+}
+.middleSection{
+    position: relative;
+    background-color: white;
+    top:81px;
+    left: 257px;
+    width: 81%;
+    height: 86%;
+}
+.langCase{
+    position: relative;
+    width: 220px;
+    height: 70px;
+    border: 1px solid rgba(224,224,224,0.7);
+    float: left;
+    padding: 0px;
+}
+.langName{
+    position: relative;
+    font-family: sans-serif;
+    width: 100%;
+    margin: 5px;
+    margin-top: 8px;
+}
+.langLogo{
+    position: relative;
+    height: 22px;
+    width: 22px;
+    margin: 5px;
+}
+.sharingLogo{
+    position: relative;
+    height: 18px;
+    width: 18px;
+    margin: 5px;
+}
+.langBottom{
+    position: relative;
+    width: 100%;
+    height: 70%;
+    margin-top: 10px;
+}
+.lastUpdate{
+    position: relative;
+    float: right;
+}
+.dropdown{
+    position: relative;
+    float: right;
+    padding: 0px;
+}
